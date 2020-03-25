@@ -1,0 +1,34 @@
+Inversion of Control[IOC]:
+----------------------------------
+"The Approach of outsourcing the construction and management of object"
+
+PRIMARY FUNCTIONS:
+------------------------------
+=> Create and manage object(INVERSION OF CONTROL).
+=> Inject object dependency(Dependency).
+=> xml configuration file (legacy but most legacy apps still use this)
+=> java annotations (modern)
+=> java source code (modern)
+ 
+SPRING DEVELOPMENT PROCESS:
+----------------------------------------------
+*  Configure your spring bean .
+		<beans>
+			<bean id=""
+			class=" fully qualified class name"
+			</bean>
+		</beans>
+		
+*  Create a spring container
+		->spring container is generally knows as ApplicationContext
+		-> specilized implementations
+				1. class path xml application context 
+				2. Annotation configuration context 
+				3. generic web applications and etc
+					example:
+						ClassPathXmlApplication context=new ClassPathXmlApplication("File Name") ;   // tell the spring .
+				
+* Retrive bean from spring container
+		
+		context.getBean("id" , Coach.class); bean id must match with configuration path.
+		
