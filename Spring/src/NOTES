@@ -31,4 +31,57 @@ SPRING DEVELOPMENT PROCESS:
 * Retrive bean from spring container
 		
 		context.getBean("id" , Coach.class); bean id must match with configuration path.
+SPRING BEAN:
+------------
+=>It is simply java object.
+=> when java object created by the spring container then spring refers to them as spring.
+=> spring beans are created from Normal java classes just like java object.
+
+SPRING DEPENDENCY INJECTION :
+-----------------------------
+"The client delegates to call the another object the responsibility of providing its dependency"
+
+INJECTION TYPES:
+---------------
+they are many types of injection with spring .will convert 2 types 
+	1. Construction Injection
+	2. Setter Injection.
+
+DEVELOPMENT PROCESS - CONSTRUCTOR INJECTION:
+-------------------   ---------------------
+=> Define the Dependency interface and class.
+=> create a constructor in your class for injection.
+=> Configure the dependency injection in spring config file.
+
+DEVELOPMENT PROCESS - SETTER INJECTION:
+-------------------   -----------------
+=>create setter method in your class for injection
+=> configure the dependency injection in spring configure file.
+
+BEAN SCOPES:
+===========
+* scope refers to the life cycle of a bean.
+* how long does the bean live.
+* how many instances are created.
+* how is the bean shared.
+
+	what is singleton?
+	*spring container create only one instance of the bean,
+	*it is cached memeory 
+	* all request for the bean
+	* will return a shared reference to the same bean.
+	
+Additional Spring bean scopes:
+-----------------------------
+1. SingleTon 		: Create a single shared instance of the bean .default scope.
+2. prototype 		: crete new bean instance for each container request.
+3. request	 		: Scoped on HTTP web request only used web apps.
+4. session	 		: Scoped on HTTP web session.only used web apps.
+5.global-session	: Scoped on global HTTP web session.only used web apps.
+
+SPRING BEAN LIFE CYCLE :
+=======================
+container started ----------> Bean Instantiated -------------> Dependencies Injected ---------->Internal spring process
+-------------> your custom init method -------> Bean is ready for use(container is shutdown)--------->your custom Destroy method -----------> Stop
+
 		
