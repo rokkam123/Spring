@@ -1,0 +1,18 @@
+ANNOTATION OVERVIEW:
+===================
+1)what are java annotations?
+	* Special labels/markers added to java classes
+	* provide meta-data about the classes.
+	* Processed at compile time or run time for special processing.
+*********************************************************************
+AUTOWIRING EXAMPLE:
+-------------------
+ 	=>It is dependency injection,spring can use auto wiring 
+ 	=> Spring will look for a class that must match with the property.
+ 
+AutoWiring examples:
+	=> 
+ANNOTATIONS AND USES:
+=====================
+1)@component : Register the Spring bean automatically 
+

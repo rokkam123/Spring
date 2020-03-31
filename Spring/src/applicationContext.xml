@@ -6,6 +6,8 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd 
     http://www.springframework.org/schema/context 
     http://www.springframework.org/schema/context/spring-context.xsd">
-	<bean id="myCoach" class="com.mahesh.spring.practice.HockeyCoach">
-	</bean>
+	<!-- <bean id="myCoach" class="com.mahesh.spring.practice.HockeyCoach">
+	</bean> -->
+	
+	<context:component-scan base-package="com.mahesh.spring.Annotations"></context:component-scan>
 </beans> 
