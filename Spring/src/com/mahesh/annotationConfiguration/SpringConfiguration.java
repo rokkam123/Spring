@@ -26,6 +26,10 @@ public class SpringConfiguration {
 	public Developer developer() {
 		return new Developer();
 	}
+	@Bean(name="developerDao")
+	public DeveloperDao developerDao() {
+		return new DeveloperDao();
+	}
 
 	@Bean
 	public BasicDataSource basicDataSource() {
