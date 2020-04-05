@@ -76,6 +76,7 @@ public class UserToDatabase {
 		int id = Integer.parseInt(sc.nextLine());
 		ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringConfiguration.class);
 		DeveloperDao developerDao = (DeveloperDao) applicationContext.getBean("developerDao");
+		developerDao.updateDeveloperById(id);
 	}
 
 	public static void getDeveloperById() {

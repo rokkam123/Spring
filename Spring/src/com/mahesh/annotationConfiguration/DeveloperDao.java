@@ -35,4 +35,9 @@ public class DeveloperDao {
 		
 	}
 
+	public void updateDeveloperById(int id) {
+		
+		
+	}
+
 }
