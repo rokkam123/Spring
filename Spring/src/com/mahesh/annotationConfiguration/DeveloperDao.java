@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.fasterxml.jackson.databind.deser.impl.BeanPropertyMap;
-
 public class DeveloperDao {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
@@ -18,15 +16,39 @@ public class DeveloperDao {
 				developerPojo.getAge(), developerPojo.getCompanyName());
 	}
 
+	/*
+	 * @queryForObject method 
+	 * 1.connection 
+	 * 2.prepare statement 
+	 * 3.execute 
+	 * 4.result 
+	 * 5.uses row mapper to convert result set to pojo
+	 * 6.return pojo
+	 */
 	public DeveloperPojo getDeveloperById(int id) {
+		/*DeveloperPojo developerPojo = jdbcTemplate.queryForObject("select * from developer where id=?",
+				new BeanPropertyRowMapper<DeveloperPojo>(DeveloperPojo.class), id);*/
 		DeveloperPojo developerPojo = jdbcTemplate.queryForObject("select * from developer where id=?",
-				new BeanPropertyRowMapper<DeveloperPojo>(DeveloperPojo.class), id);
+				new OurOwnRowMapper(),id);
 		return developerPojo;
 	}
-
+	
+	/*
+	 * @query method
+	 * 
+	 * 1.connection con
+	 * 2.prepare statement
+	 * 3.execute query 
+	 * 4.result set
+	 * 5.repeat calling map row method multiple times
+	 * 6.adds all objects into list
+	 * 7.return list
+	 */
 	public List<DeveloperPojo> getAllDevelopers() {
+		/*List<DeveloperPojo> listOfDevelopers = (ArrayList<DeveloperPojo>) jdbcTemplate.query("select * from developer",
+				new BeanPropertyRowMapper<DeveloperPojo>(DeveloperPojo.class));*/
 		List<DeveloperPojo> listOfDevelopers = (ArrayList<DeveloperPojo>) jdbcTemplate.query("select * from developer",
-				new BeanPropertyRowMapper<DeveloperPojo>(DeveloperPojo.class));
+				new OurOwnRowMapper());
 		return listOfDevelopers;
 	}
 
