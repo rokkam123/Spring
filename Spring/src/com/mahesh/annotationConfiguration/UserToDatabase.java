@@ -1,7 +1,7 @@
 package com.mahesh.annotationConfiguration;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 import org.springframework.context.ApplicationContext;
@@ -13,11 +13,13 @@ public class UserToDatabase {
 		while (true) {
 			System.out.println("Enter Your Option");
 			System.out.println("1.INSERT");
-			System.out.println("2.UPDATE");
+			System.out.println("2.UPDATE"); 
 			System.out.println("3.DELETE");
 			System.out.println("4.GETBYID");
 			System.out.println("5.GETALL");
-			System.out.println("6.EXIT");
+			System.out.println("6.COUNT");
+			System.out.println("7.LIST");
+			System.out.println("8.EXIT");
 			int option = Integer.parseInt(sc.nextLine());
 			switch (option) {
 			case 1:
@@ -41,6 +43,14 @@ public class UserToDatabase {
 				getAllDevelopers();
 				break;
 			case 6:
+				System.out.println("getCount logic Goes Here");
+				getCount();
+				break;
+			case 7:
+				System.out.println("GetAll logic Goes Here");
+				list();
+				break;
+			case 8:
 				System.out.println("Exit logic Goes Here");
 				System.exit(0);
 				break;
@@ -48,6 +58,27 @@ public class UserToDatabase {
 			}
 
 		}
+	}
+
+	public static void list() {
+		ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringConfiguration.class);
+		DeveloperDao developerDao = (DeveloperDao) applicationContext.getBean("developerDao");
+		List<Map<String, Object>> list = developerDao.list();
+		for (Map<String, Object> map : list) {
+			System.out.println("========================");
+			System.out.println(map.get("id"));
+			System.out.println(map.get("name"));
+			System.out.println(map.get("age"));
+			System.out.println(map.get("companyName"));
+			System.out.println("========================");
+		}
+	}
+
+	public static void getCount() {
+		ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringConfiguration.class);
+		DeveloperDao developerDao = (DeveloperDao) applicationContext.getBean("developerDao");
+		int count = developerDao.getCount();
+		System.out.println(count);
 	}
 
 	public static void insert() {

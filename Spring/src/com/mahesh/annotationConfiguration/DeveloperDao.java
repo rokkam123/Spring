@@ -2,6 +2,7 @@ package com.mahesh.annotationConfiguration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -60,6 +61,16 @@ public class DeveloperDao {
 	public void updateDeveloperById(int id) {
 		
 		
+	}
+
+	public List<Map<String, Object>> list() {
+		List<Map<String, Object>> listOfDeveloper = jdbcTemplate.queryForList("select * from developer");
+		return listOfDeveloper;
+	}
+
+	public int getCount() {
+		Integer count = jdbcTemplate.queryForObject("select count(*) from developer", Integer.class);
+		return count;
 	}
 
 }
