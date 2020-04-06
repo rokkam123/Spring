@@ -1,5 +1,6 @@
 package com.mahesh.annotationConfiguration;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -19,7 +20,8 @@ public class UserToDatabase {
 			System.out.println("5.GETALL");
 			System.out.println("6.COUNT");
 			System.out.println("7.LIST");
-			System.out.println("8.EXIT");
+			System.out.println("8.BatchUpdate");
+			System.out.println("9.EXIT");
 			int option = Integer.parseInt(sc.nextLine());
 			switch (option) {
 			case 1:
@@ -51,6 +53,10 @@ public class UserToDatabase {
 				list();
 				break;
 			case 8:
+				System.out.println("Batch update  logic Goes Here");
+				OurBatchUpdate();
+				break;
+			case 9:
 				System.out.println("Exit logic Goes Here");
 				System.exit(0);
 				break;
@@ -58,6 +64,31 @@ public class UserToDatabase {
 			}
 
 		}
+	}
+
+	public static void OurBatchUpdate() {
+		DeveloperPojo developerPojo1=new DeveloperPojo();
+		developerPojo1.setId(3);
+		developerPojo1.setName("B");
+		developerPojo1.setAge(21);
+		developerPojo1.setCompanyName("B-Company");
+		DeveloperPojo developerPojo2=new DeveloperPojo();
+		developerPojo2.setId(4);
+		developerPojo2.setName("c");
+		developerPojo2.setAge(22);
+		developerPojo2.setCompanyName("C-Company"); 
+		DeveloperPojo developerPojo3=new DeveloperPojo();
+		developerPojo3.setId(5);
+		developerPojo3.setName("D");
+		developerPojo3.setAge(22);
+		developerPojo3.setCompanyName("D-Company"); 
+		List<DeveloperPojo> developerList=new ArrayList<>();
+		developerList.add(developerPojo1);
+		developerList.add(developerPojo2);
+		developerList.add(developerPojo3);
+		ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringConfiguration.class);
+		DeveloperDao developerDao = (DeveloperDao) applicationContext.getBean("developerDao");
+		developerDao.saveDeveloperList(developerList);
 	}
 
 	public static void list() {

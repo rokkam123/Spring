@@ -72,5 +72,9 @@ public class DeveloperDao {
 		Integer count = jdbcTemplate.queryForObject("select count(*) from developer", Integer.class);
 		return count;
 	}
+	public void saveDeveloperList(List<DeveloperPojo> listOfDevelopers) {
+		OurBatchPrepareStatementSetter bps=new OurBatchPrepareStatementSetter(listOfDevelopers);
+		jdbcTemplate.batchUpdate("insert into developer values(?,?,?,?)",bps);
+	}
 
 }
